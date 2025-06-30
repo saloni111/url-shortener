@@ -1,8 +1,8 @@
 # URL Shortener - Go Backend Project
 
-A high-performance URL shortening service built with Go and Gin framework. This project demonstrates modern backend development practices suitable for FAANG and AWS SDE interviews.
+A high-performance URL shortening service built with Go and Gin framework. 
 
-## 🚀 Features
+##  Features
 
 - **URL Shortening**: Convert long URLs to short, memorable codes
 - **Analytics Tracking**: Track click counts for each shortened URL
@@ -12,7 +12,7 @@ A high-performance URL shortening service built with Go and Gin framework. This 
 - **Error Handling**: Comprehensive validation and error responses
 - **Health Monitoring**: Built-in health check endpoint
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Language**: Go 1.24+
 - **Framework**: Gin (HTTP web framework)
@@ -20,7 +20,7 @@ A high-performance URL shortening service built with Go and Gin framework. This 
 - **Validation**: Gin's built-in validation
 - **Testing**: Built-in Go testing
 
-## 📋 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -122,7 +122,7 @@ curl http://localhost:8080/health
 }
 ```
 
-## 🏗️ Project Structure
+##  Project Structure
 
 ```
 url-shortener/
@@ -139,7 +139,7 @@ url-shortener/
 └── README.md              # This file
 ```
 
-## 🔧 Configuration
+##  Configuration
 
 The service can be configured using environment variables:
 
@@ -148,7 +148,7 @@ The service can be configured using environment variables:
 | `PORT` | `8080` | Server port |
 | `GIN_MODE` | `debug` | Gin mode (debug/release) |
 
-## 🧪 Testing
+##  Testing
 
 Run the tests:
 
@@ -156,7 +156,7 @@ Run the tests:
 go test ./...
 ```
 
-## 🚀 Production Considerations
+##  Production Considerations
 
 For production deployment, consider:
 
@@ -169,31 +169,4 @@ For production deployment, consider:
 7. **SSL/TLS**: Add HTTPS support
 8. **Logging**: Implement structured logging
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🎯 Interview Preparation
-
-This project demonstrates:
-
-- **System Design**: Scalable URL shortening architecture
-- **Performance**: Sub-millisecond response times
-- **Code Quality**: Clean, maintainable Go code
-- **API Design**: RESTful API with proper HTTP status codes
-- **Error Handling**: Comprehensive validation and error responses
-- **Documentation**: Clear README and code comments
-
-Perfect for showcasing your backend development skills in technical interviews!
-
-## 📞 Support
-
-If you have any questions or need help, please open an issue on GitHub.
