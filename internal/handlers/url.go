@@ -18,18 +18,6 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-func RedirectHandler(c *gin.Context) {
-    code := c.Param("code")
-
-    // Hardcoded YouTube example
-    if code == "5AwY56" {
-        c.Redirect(http.StatusMovedPermanently, "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-        return
-    }
-
-    // ...existing code for in-memory lookup...
-}
-
 // generateShortCode creates a random 6-character string
 func generateShortCode() string {
 	b := make([]byte, 6)
@@ -76,6 +64,14 @@ func ShortenURLHandler(c *gin.Context) {
 func RedirectHandler(c *gin.Context) {
 	code := c.Param("code")
 
+
+	// Hardcoded YouTube example
+       if code == "5AwY56" {
+            c.Redirect(http.StatusMovedPermanently, "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+             return
+       }
+
+	
 	originalURL, exists := urlStore[code]
 	if !exists {
 		c.JSON(http.StatusNotFound, gin.H{"error": "URL not found"})
