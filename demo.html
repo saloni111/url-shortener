@@ -199,10 +199,10 @@
                     </div>
                     <p><strong>Shortened URL:</strong></p>
                     <div class="url-display short-url">
-                        http://localhost:8080/5AwY56
+                        https://url-shortener-bzrr.onrender.com/5AwY56
                     </div>
                     <p><strong>Try it:</strong></p>
-                    <a href="http://localhost:8080/5AwY56" target="_blank" class="btn">🚀 Visit Short URL</a>
+                    <a href="https://url-shortener-bzrr.onrender.com/5AwY56" target="_blank" class="btn">🚀 Visit Short URL</a>
                     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="btn btn-secondary">📺 Original URL</a>
                 </div>
             </div>
@@ -282,20 +282,20 @@
                 result.innerHTML = 'Shortening...';
                 result.style.display = 'block';
                 try {
-                    const res = await fetch('http://localhost:8080/shorten', {
+                    const res = await fetch('https://url-shortener-bzrr.onrender.com/shorten', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ url })
                     });
                     if (!res.ok) throw new Error('Failed to shorten URL');
                     const data = await res.json();
-                    result.innerHTML = `<strong>Shortened URL:</strong> <a href="http://${data.short_url}" target="_blank">http://${data.short_url}</a>`;
+                    result.innerHTML = `<strong>Shortened URL:</strong> <a href="https://url-shortener-bzrr.onrender.com/${data.code}" target="_blank">https://url-shortener-bzrr.onrender.com/${data.code}</a>`;
                 } catch (err) {
                     result.innerHTML = '<span style="color:red;">Error: ' + err.message + '</span>';
                 }
             });
             // Add click tracking for demo purposes
-            const demoBtn = document.querySelector('a[href="http://localhost:8080/5AwY56"]');
+            const demoBtn = document.querySelector('a[href="https://url-shortener-bzrr.onrender.com/5AwY56"]');
             if (demoBtn) {
                 demoBtn.addEventListener('click', function() {
                     console.log('Demo URL clicked! This would redirect to YouTube in a real scenario.');
