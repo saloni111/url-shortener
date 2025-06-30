@@ -2,6 +2,9 @@
 
 A high-performance URL shortening service built with Go and Gin framework. 
 
+**DEMO LINK** : https://saloni111.github.io/url-shortener/demo.html
+
+
 ##  Features
 
 - **URL Shortening**: Convert long URLs to short, memorable codes
@@ -154,8 +157,9 @@ Run the tests:
 
 ```bash
 go test ./...
+```
 
-**## Demo Link** : https://saloni111.github.io/url-shortener/demo.html
+
 
 
 
