@@ -132,9 +132,9 @@ url-shortener/
 ├── internal/
 │   ├── handlers/
 │   │   ├── url.go          # URL shortening and redirect handlers
-│   │   └── analytics.go    # Analytics handler
+│   │   └── analytics.go    # Tracks how many times URLs are clicked
 │   └── database/           # Database interfaces (for future use)
-├── go.mod                  # Go module file
+├── go.mod                  # Go module file (list project's dependencies)
 ├── go.sum                  # Go module checksums
 └── README.md              # This file
 ```
