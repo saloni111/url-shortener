@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener Demo - Portfolio Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+
+        .demo-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .example {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .url-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+
+        .short-url {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .original-url {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 10px 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #5a6fd8;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e9ecef;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> URL Shortener</h1>
+            <p>High-performance URL shortening service built with Go</p>
+        </div>
+
+        <div class="content">
+            <div class="demo-section">
+                <h2>🎯 Live Demo</h2>
+                <form id="shorten-form" style="margin-bottom: 20px;">
+                    <input type="url" id="user-url" placeholder="Enter any URL (e.g. https://youtube.com/...)" required style="width: 70%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em;">
+                    <button type="submit" class="btn">Shorten</button>
+                </form>
+                <div id="shorten-result" style="display:none; margin-bottom: 20px;"></div>
+                <hr style="margin: 30px 0;">
+                <p>This demo shows how the URL shortener works with a real YouTube example:</p>
+                <div class="example">
+                    <h3>📺 YouTube Example</h3>
+                    <p><strong>Original URL:</strong></p>
+                    <div class="url-display original-url">
+                        https://www.youtube.com/watch?v=dQw4w9WgXcQ
+                    </div>
+                    <p><strong>Shortened URL:</strong></p>
+                    <div class="url-display short-url">
+                        http://localhost:8080/5AwY56
+                    </div>
+                    <p><strong>Try it:</strong></p>
+                    <a href="http://localhost:8080/5AwY56" target="_blank" class="btn">🚀 Visit Short URL</a>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="btn btn-secondary">📺 Original URL</a>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>⚡ Features</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>🚀 Fast Redirects</h3>
+                        <p>Sub-millisecond response times for instant URL redirection</p>
+                    </div>
+                    <div class="feature">
+                        <h3>📊 Analytics</h3>
+                        <p>Track click counts and usage statistics for each shortened URL</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🔒 Secure</h3>
+                        <p>Input validation and error handling for robust operation</p>
+                    </div>
+                    <div class="feature">
+                        <h3>📱 RESTful API</h3>
+                        <p>Clean API endpoints for easy integration and automation</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2>🛠️ Tech Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Go (Golang)</span>
+                    <span class="tech-tag">Gin Framework</span>
+                    <span class="tech-tag">RESTful API</span>
+                    <span class="tech-tag">HTTP/HTTPS</span>
+                    <span class="tech-tag">JSON</span>
+                    <span class="tech-tag">In-Memory Storage</span>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2> API Endpoints</h2>
+                <div class="example">
+                    <p><strong>Health Check:</strong></p>
+                    <div class="url-display">GET /health</div>
+                    
+                    <p><strong>Create Short URL:</strong></p>
+                    <div class="url-display">POST /shorten</div>
+                    
+                    <p><strong>Redirect to Original:</strong></p>
+                    <div class="url-display">GET /:code</div>
+                    
+                    <p><strong>Get Analytics:</strong></p>
+                    <div class="url-display">GET /analytics/:code</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>Built by Saloni Gandhi</strong> | Go Backend Development Project</p>
+            <p>Perfect for showcasing backend development skills in technical interviews!</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Interactive shortening
+            const form = document.getElementById('shorten-form');
+            const input = document.getElementById('user-url');
+            const result = document.getElementById('shorten-result');
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                result.style.display = 'none';
+                result.innerHTML = '';
+                const url = input.value.trim();
+                if (!url) return;
+                result.innerHTML = 'Shortening...';
+                result.style.display = 'block';
+                try {
+                    const res = await fetch('http://localhost:8080/shorten', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ url })
+                    });
+                    if (!res.ok) throw new Error('Failed to shorten URL');
+                    const data = await res.json();
+                    result.innerHTML = `<strong>Shortened URL:</strong> <a href="http://${data.short_url}" target="_blank">http://${data.short_url}</a>`;
+                } catch (err) {
+                    result.innerHTML = '<span style="color:red;">Error: ' + err.message + '</span>';
+                }
+            });
+            // Add click tracking for demo purposes
+            const demoBtn = document.querySelector('a[href="http://localhost:8080/5AwY56"]');
+            if (demoBtn) {
+                demoBtn.addEventListener('click', function() {
+                    console.log('Demo URL clicked! This would redirect to YouTube in a real scenario.');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
